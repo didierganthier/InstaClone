@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 1034;
     public String photoFileName = "photo.jpg";
-    private File photoFile;
+    public static File photoFile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
                 savePost(description, user, photoFile);
+                Intent inte = new Intent(getApplicationContext(),FeedAdapter.class);
+                startActivity(inte);
             }
         });
     }
