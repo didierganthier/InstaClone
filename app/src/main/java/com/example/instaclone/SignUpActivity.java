@@ -33,6 +33,13 @@ public class SignUpActivity extends AppCompatActivity {
         passwordSignup = findViewById(R.id.passwordSignup);
         btnSignup = findViewById(R.id.btnSignUp);
         tvLogin = findViewById(R.id.tvLogin);
+        tvLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent logIntent = new Intent(getApplicationContext(),LoginActivity.class);
+                startActivity(logIntent);
+            }
+        });
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,9 +63,10 @@ public class SignUpActivity extends AppCompatActivity {
                             usernameSignup.setText("");
                             emailSignup.setText("");
                             passwordSignup.setText("");
-                            Intent i = new Intent(getApplicationContext(),MainActivity.class);
+                            Intent i = new Intent(getApplicationContext(), MainActivity.class);
                             startActivity(i);
                         }else{
+                            Toast.makeText(SignUpActivity.this, "Error", Toast.LENGTH_SHORT).show();
                             ParseErrorHandler.handleParseError(e);
                         }
                     }
